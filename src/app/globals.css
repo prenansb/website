@@ -1,25 +1,26 @@
 @import "tailwindcss";
 
+/* Radix Mauve — https://www.radix-ui.com/colors */
 :root {
-  --background: #fafafa;
-  --foreground: #18181b;
-  --muted: #71717a;
-  --faint: #a1a1aa;
-  --line: rgba(0, 0, 0, 0.08);
-  --hover: rgba(0, 0, 0, 0.04);
-  --selection: rgba(0, 0, 0, 0.1);
+  color-scheme: light;
+  --background: #fdfcfd;
+  --foreground: #211f26;
+  --muted: #65636d;
+  --faint: #8e8c99;
+  --line: #dbd8e0;
+  --hover: #30004010;
+  --selection: #20003820;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-    --muted: #8b8b8e;
-    --faint: #5a5a5e;
-    --line: rgba(255, 255, 255, 0.1);
-    --hover: rgba(255, 255, 255, 0.05);
-    --selection: rgba(255, 255, 255, 0.15);
-  }
+.dark {
+  color-scheme: dark;
+  --background: #121113;
+  --foreground: #eeeef0;
+  --muted: #b5b2bc;
+  --faint: #6f6d78;
+  --line: #3c393f;
+  --hover: #ebeaf814;
+  --selection: #efe6fe25;
 }
 
 @theme inline {

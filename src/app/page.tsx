@@ -1,24 +1,7 @@
+import { ArrowTopRightIcon } from "@radix-ui/react-icons";
 import { Reveal } from "@/components/reveal";
+import { ThemeSwitch } from "@/components/theme-switch";
 import { experience, profile, projects, socials } from "@/lib/content";
-
-function ArrowUpRight({ className = "" }: { className?: string }) {
-  return (
-    <svg
-      viewBox="0 0 16 16"
-      fill="none"
-      aria-hidden="true"
-      className={className}
-    >
-      <path
-        d="M4.5 11.5L11.5 4.5M11.5 4.5H5.5M11.5 4.5V10.5"
-        stroke="currentColor"
-        strokeWidth="1.25"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
 
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
@@ -41,7 +24,7 @@ export default function Home() {
         </p>
       </Reveal>
 
-      <Reveal as="section" delay={0.08} className="mt-10 space-y-4">
+      <Reveal as="section" delay={0.15} className="mt-10 space-y-4">
         <p className="text-[15px] leading-7 text-muted">{profile.bio[0]}</p>
         <p className="text-[15px] leading-7 text-muted">
           {profile.bioOpen.before}
@@ -58,7 +41,7 @@ export default function Home() {
       </Reveal>
 
       {/* Work */}
-      <Reveal as="section" delay={0.12} className="mt-20">
+      <Reveal as="section" delay={0.2} className="mt-20">
         <SectionLabel>Work</SectionLabel>
         <ul className="-mx-3">
           {experience.map((job) => {
@@ -79,7 +62,7 @@ export default function Home() {
                     <span className="flex items-center gap-1.5 font-medium text-foreground">
                       {job.company}
                       {job.href && (
-                        <ArrowUpRight className="h-3.5 w-3.5 -translate-y-0.5 text-faint opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100 -translate-x-1" />
+                        <ArrowTopRightIcon className="h-3.5 w-3.5 -translate-y-0.5 text-faint opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100 -translate-x-1" />
                       )}
                     </span>
                     <span className="shrink-0 font-mono text-xs text-faint">
@@ -98,7 +81,7 @@ export default function Home() {
       </Reveal>
 
       {/* Projects */}
-      <Reveal as="section" delay={0.12} className="mt-20">
+      <Reveal as="section" delay={0.2} className="mt-20">
         <SectionLabel>Selected Projects</SectionLabel>
         <ul className="-mx-3 grid gap-2">
           {projects.map((project) => (
@@ -112,7 +95,7 @@ export default function Home() {
                 <div className="flex items-baseline justify-between gap-4">
                   <span className="flex items-center gap-1.5 font-medium text-foreground">
                     {project.name}
-                    <ArrowUpRight className="h-3.5 w-3.5 -translate-y-0.5 -translate-x-1 text-faint opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100" />
+                    <ArrowTopRightIcon className="h-3.5 w-3.5 -translate-y-0.5 -translate-x-1 text-faint opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100" />
                   </span>
                   <span className="shrink-0 font-mono text-xs text-faint">
                     {project.year}
@@ -128,7 +111,7 @@ export default function Home() {
       </Reveal>
 
       {/* Connect */}
-      <Reveal as="footer" delay={0.12} className="mt-20">
+      <Reveal as="footer" delay={0.2} className="mt-20">
         <SectionLabel>Connect</SectionLabel>
         <p className="text-[15px] leading-7 text-muted">
           Always happy to talk about engineering, design, and building
@@ -153,14 +136,17 @@ export default function Home() {
                 className="group inline-flex items-center gap-1 text-sm text-muted transition-colors hover:text-foreground"
               >
                 {social.label}
-                <ArrowUpRight className="h-3 w-3 text-faint transition-colors group-hover:text-foreground" />
+                <ArrowTopRightIcon className="h-3 w-3 text-faint transition-colors group-hover:text-foreground" />
               </a>
             </li>
           ))}
         </ul>
-        <p className="mt-16 font-mono text-xs text-faint">
-          © {new Date().getFullYear()} {profile.name}.
-        </p>
+        <div className="mt-16 flex items-center justify-between gap-4">
+          <p className="font-mono text-xs text-faint">
+            © {new Date().getFullYear()} {profile.name}.
+          </p>
+          <ThemeSwitch />
+        </div>
       </Reveal>
     </main>
   );

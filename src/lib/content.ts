@@ -40,7 +40,7 @@ export const experience: Experience[] = [
   {
     company: "Open",
     role: "Design Engineer",
-    period: "2025 — 2026",
+    period: "2025 — Current",
     description:
       "Full-stack design engineer at an AI-native commerce platform powering 140+ restaurant brands. Owned native menu & fulfillment UX, shipped iOS Live Activities end-to-end, and built greenfield merchant-portal modules.",
     href: "https://getopen.com/",
