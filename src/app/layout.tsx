@@ -18,7 +18,7 @@ const description = `${profile.role} based in ${profile.location}. ${profile.tag
 export const metadata: Metadata = {
   metadataBase: new URL("https://prenansb.dev"),
   title: {
-    default: `${profile.name} — ${profile.role}`,
+    default: profile.name,
     template: `%s — ${profile.name}`,
   },
   description,
@@ -33,14 +33,14 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: profile.name }],
   openGraph: {
-    title: `${profile.name} — ${profile.role}`,
+    title: profile.name,
     description,
     type: "website",
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: `${profile.name} — ${profile.role}`,
+    title: profile.name,
     description,
     creator: "@prenansb",
   },
