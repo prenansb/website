@@ -7,8 +7,14 @@ export const profile = {
     "I build animation-rich, production-grade interfaces — and the backends behind them.",
   bio: [
     "Software engineer with 5+ years of experience, focused on front-end and design engineering with a strong full-stack foundation. Most of my time goes into React, React Native, and Node.js.",
-    "I care about the details that make software feel alive: spring physics, haptics, fast feedback loops, and interfaces that get out of the way. Lately I've been shipping across web, native mobile, and backend at an AI-native commerce platform.",
   ],
+  bioOpen: {
+    before:
+      "I care about how software feels to use, not just what it does — the small stuff most teams skip. Lately I've been shipping across web, native mobile, and backend at ",
+    label: "Open",
+    href: "https://getopen.com/",
+    after: ".",
+  },
 } as const;
 
 export const socials = [
@@ -37,6 +43,7 @@ export const experience: Experience[] = [
     period: "2025 — 2026",
     description:
       "Full-stack design engineer at an AI-native commerce platform powering 140+ restaurant brands. Owned native menu & fulfillment UX, shipped iOS Live Activities end-to-end, and built greenfield merchant-portal modules.",
+    href: "https://getopen.com/",
   },
   {
     company: "Afya",
@@ -44,6 +51,7 @@ export const experience: Experience[] = [
     period: "2025",
     description:
       "Senior frontend engineer on iClinic, Brazil's leading cloud-based medical software. Drove the migration of legacy Django + React codebases to Next.js and built design-system components adopted across 4 product teams.",
+    href: "https://iclinic.com.br/",
   },
   {
     company: "Betscale",

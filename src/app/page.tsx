@@ -33,13 +33,6 @@ export default function Home() {
     <main className="mx-auto w-full max-w-[640px] px-6 py-24 sm:py-32">
       {/* Hero */}
       <Reveal as="header">
-        <div className="mb-5 inline-flex items-center gap-2 font-mono text-xs text-muted">
-          <span className="relative flex h-1.5 w-1.5">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-500/70" />
-            <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-500" />
-          </span>
-          Available for work
-        </div>
         <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">
           {profile.name}
         </h1>
@@ -49,11 +42,19 @@ export default function Home() {
       </Reveal>
 
       <Reveal as="section" delay={0.08} className="mt-10 space-y-4">
-        {profile.bio.map((paragraph) => (
-          <p key={paragraph} className="text-[15px] leading-7 text-muted">
-            {paragraph}
-          </p>
-        ))}
+        <p className="text-[15px] leading-7 text-muted">{profile.bio[0]}</p>
+        <p className="text-[15px] leading-7 text-muted">
+          {profile.bioOpen.before}
+          <a
+            href={profile.bioOpen.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-foreground underline decoration-line underline-offset-4 transition-colors hover:decoration-foreground"
+          >
+            {profile.bioOpen.label}
+          </a>
+          {profile.bioOpen.after}
+        </p>
       </Reveal>
 
       {/* Work */}
@@ -120,16 +121,6 @@ export default function Home() {
                 <p className="mt-2 text-sm leading-6 text-muted">
                   {project.blurb}
                 </p>
-                <div className="mt-3 flex flex-wrap gap-1.5">
-                  {project.stack.map((tech) => (
-                    <span
-                      key={tech}
-                      className="rounded-full border border-line px-2 py-0.5 font-mono text-[11px] text-faint"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
               </a>
             </li>
           ))}
@@ -140,11 +131,13 @@ export default function Home() {
       <Reveal as="footer" delay={0.12} className="mt-20">
         <SectionLabel>Connect</SectionLabel>
         <p className="text-[15px] leading-7 text-muted">
-          Always happy to talk about interface engineering, motion, and
-          building products. Reach me at{" "}
+          Always happy to talk about engineering, design, and building
+          products.
+          <br />
+          Reach me at{" "}
           <a
             href={`mailto:${profile.email}`}
-            className="text-foreground underline decoration-line underline-offset-4 transition-colors hover:decoration-foreground"
+            className="font-semibold text-foreground underline decoration-line underline-offset-4 transition-colors hover:decoration-foreground"
           >
             {profile.email}
           </a>
@@ -166,8 +159,7 @@ export default function Home() {
           ))}
         </ul>
         <p className="mt-16 font-mono text-xs text-faint">
-          © {new Date().getFullYear()} {profile.name}. Built with Next.js,
-          Tailwind &amp; Motion.
+          © {new Date().getFullYear()} {profile.name}.
         </p>
       </Reveal>
     </main>
