@@ -25,7 +25,6 @@ export const socials = [
     handle: "pedro-renan",
     href: "https://www.linkedin.com/in/pedro-renan",
   },
-  { label: "Email", handle: "prenansb@gmail.com", href: "mailto:prenansb@gmail.com" },
 ] as const;
 
 export type Experience = {
@@ -56,7 +55,7 @@ export const experience: Experience[] = [
   {
     company: "Betscale",
     role: "Software Engineer & Co-founder",
-    period: "2024 — 2025",
+    period: "2024 — Current",
     description:
       "Co-founded a bet-tracking platform for esports, helping bettors move from casual to professional with fast onboarding and clear analytics. Built the product from the ground up — landing page, backend, and payments — including a local-first dashboard that keeps working offline and syncs in real time once back online.",
     href: "https://www.betscale.app/",

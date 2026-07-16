@@ -50,9 +50,11 @@ body {
   background: var(--selection);
 }
 
-a {
-  text-decoration: none;
-  color: inherit;
+@layer base {
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const description = `${profile.role} based in ${profile.location}. ${profile.tagline}`;
+const description = `${profile.role} based in ${profile.location}.`;
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://prenansb.dev"),
