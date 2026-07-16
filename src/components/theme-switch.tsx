@@ -33,13 +33,13 @@ export function ThemeSwitch() {
             aria-label={label}
             aria-pressed={active}
             onClick={() => setTheme(value)}
-            className={`rounded-md p-1.5 transition-colors ${
+            className={`rounded-md p-1 transition-colors ${
               active
                 ? "text-foreground"
                 : "text-faint hover:text-muted"
             }`}
           >
-            <Icon className="h-3.5 w-3.5" />
+            <Icon className="h-3 w-3" />
           </button>
         );
       })}
