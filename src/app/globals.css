@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 /* Radix Gray — https://www.radix-ui.com/colors */
 :root {
   color-scheme: light;

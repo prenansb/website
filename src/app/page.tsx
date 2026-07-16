@@ -32,23 +32,22 @@ export default function Home() {
           {profile.name}
         </h1>
         <p className="mt-2 text-[15px] font-medium text-muted">
-          {profile.role} · {profile.location}
+          {profile.role}
         </p>
       </Reveal>
 
-      <Reveal as="section" delay={0.15} className="mt-8 space-y-4">
-        <p className="text-[15px] font-normal leading-7 text-muted">{profile.bio[0]}</p>
+      <Reveal as="section" delay={0.15} className="mt-8">
         <p className="text-[15px] font-normal leading-7 text-muted">
-          {profile.bioOpen.before}
+          {profile.bio.before}
           <a
-            href={profile.bioOpen.href}
+            href={profile.bio.href}
             target="_blank"
             rel="noopener noreferrer"
             className="text-foreground underline decoration-line underline-offset-4 transition-colors hover:decoration-foreground"
           >
-            {profile.bioOpen.label}
+            {profile.bio.label}
           </a>
-          {profile.bioOpen.after}
+          {profile.bio.after}
         </p>
       </Reveal>
 
@@ -70,8 +69,17 @@ export default function Home() {
                     : {})}
                   className="group block rounded-lg px-3 py-4 transition-colors duration-300 hover:bg-hover"
                 >
-                  <div className="flex items-baseline justify-between gap-4">
-                    <span className="flex items-center gap-1.5 text-[15px] font-medium text-foreground">
+                  <div className="flex items-center justify-between gap-4">
+                    <span className="flex items-center gap-2 text-[15px] font-medium text-foreground">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={job.logo}
+                        alt=""
+                        aria-hidden
+                        width={16}
+                        height={16}
+                        className="size-4 shrink-0 object-contain opacity-70 brightness-0 dark:opacity-80 dark:invert"
+                      />
                       {job.company}
                       {job.href && (
                         <ArrowTopRightIcon className="h-2.5 w-2.5 -translate-y-px text-faint opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100 -translate-x-1.5" />
@@ -104,8 +112,17 @@ export default function Home() {
                 rel="noopener noreferrer"
                 className="group block rounded-lg border border-transparent px-3 py-4 transition-colors duration-300 hover:border-line hover:bg-hover"
               >
-                <div className="flex items-baseline justify-between gap-4">
-                  <span className="flex items-center gap-1 text-[15px] font-medium text-foreground">
+                <div className="flex items-center justify-between gap-4">
+                  <span className="flex items-center gap-2 text-[15px] font-medium text-foreground">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={project.logo}
+                      alt=""
+                      aria-hidden
+                      width={16}
+                      height={16}
+                      className="size-4 shrink-0 object-contain opacity-70 brightness-0 dark:opacity-80 dark:invert"
+                    />
                     {project.name}
                     <ArrowTopRightIcon className="h-2.5 w-2.5 -translate-y-px -translate-x-1 text-faint opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100" />
                   </span>

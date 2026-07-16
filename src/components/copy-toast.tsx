@@ -8,13 +8,13 @@ import {
   useReducedMotion,
   useTransform,
 } from "motion/react";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 
 const ICON_SIZE = 36;
-const EXPANDED_WIDTH = 188;
 const MORPH_DURATION = 0.45;
-const EASE = [0.16, 1, 0.3, 1] as const;
+// Soft ease-out without the long asymptotic crawl of [0.16, 1, 0.3, 1].
+const EASE = [0.22, 1, 0.36, 1] as const;
 
 type CopyToastProps = {
   onComplete: () => void;
@@ -24,19 +24,32 @@ export function CopyToast({ onComplete }: CopyToastProps) {
   const reduce = useReducedMotion();
   const onCompleteRef = useRef(onComplete);
   onCompleteRef.current = onComplete;
+  const toastRef = useRef<HTMLDivElement>(null);
+  const contentWidthRef = useRef(ICON_SIZE);
   const [mounted, setMounted] = useState(false);
 
   const y = useMotionValue(reduce ? 0 : 36);
   const opacity = useMotionValue(reduce ? 1 : 0);
-  const width = useMotionValue(reduce ? EXPANDED_WIDTH : ICON_SIZE);
+  const maxWidth = useMotionValue(reduce ? 999 : ICON_SIZE);
   const textProgress = useMotionValue(reduce ? 1 : 0);
 
   const textOpacity = useTransform(textProgress, [0, 0.35, 1], [0, 0, 1]);
-  const textMaxWidth = useTransform(textProgress, [0, 1], [0, 140]);
 
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  useLayoutEffect(() => {
+    if (!mounted || reduce) return;
+    const el = toastRef.current;
+    if (!el) return;
+
+    // scrollWidth reports full content even while maxWidth clips the pill.
+    const borderX =
+      Number.parseFloat(getComputedStyle(el).borderLeftWidth) +
+      Number.parseFloat(getComputedStyle(el).borderRightWidth);
+    contentWidthRef.current = el.scrollWidth + borderX;
+  }, [mounted, reduce]);
 
   useEffect(() => {
     if (!mounted) return;
@@ -56,12 +69,19 @@ export function CopyToast({ onComplete }: CopyToastProps) {
       ]);
       if (cancelled) return;
 
+      // Animate past content width so the ease-out tail is clipped by w-max
+      // and never visibly stretches the pill after the label fits.
+      const openTarget = contentWidthRef.current + 8;
+
       // 2. Morph open + reveal text
       await Promise.all([
-        animate(width, EXPANDED_WIDTH, { duration: MORPH_DURATION, ease: EASE }),
+        animate(maxWidth, openTarget, { duration: MORPH_DURATION, ease: EASE }),
         animate(textProgress, 1, { duration: MORPH_DURATION, ease: EASE }),
       ]);
       if (cancelled) return;
+
+      // Snap to exact content width so close starts immediately.
+      maxWidth.set(contentWidthRef.current);
 
       // Hold
       await new Promise((resolve) => window.setTimeout(resolve, 1400));
@@ -70,7 +90,7 @@ export function CopyToast({ onComplete }: CopyToastProps) {
       // 3. Morph closed + hide text
       await Promise.all([
         animate(textProgress, 0, { duration: MORPH_DURATION, ease: EASE }),
-        animate(width, ICON_SIZE, { duration: MORPH_DURATION, ease: EASE }),
+        animate(maxWidth, ICON_SIZE, { duration: MORPH_DURATION, ease: EASE }),
       ]);
       if (cancelled) return;
 
@@ -89,7 +109,7 @@ export function CopyToast({ onComplete }: CopyToastProps) {
     return () => {
       cancelled = true;
     };
-  }, [mounted, opacity, reduce, textProgress, width, y]);
+  }, [maxWidth, mounted, opacity, reduce, textProgress, y]);
 
   if (!mounted) return null;
 
@@ -106,17 +126,18 @@ export function CopyToast({ onComplete }: CopyToastProps) {
     </div>
   ) : (
     <motion.div
+      ref={toastRef}
       role="status"
       aria-live="polite"
-      className="pointer-events-none fixed bottom-6 left-1/2 z-50 flex h-9 items-center overflow-hidden rounded-full border border-line bg-background text-foreground shadow-[0_8px_30px_rgb(0,0,0,0.06)]"
-      style={{ y, opacity, width, x: "-50%" }}
+      className="pointer-events-none fixed bottom-6 left-1/2 z-50 flex h-9 w-max items-center overflow-hidden rounded-full border border-line bg-background text-foreground shadow-[0_8px_30px_rgb(0,0,0,0.06)]"
+      style={{ y, opacity, maxWidth, x: "-50%" }}
     >
       <span className="flex h-9 w-9 shrink-0 items-center justify-center">
         <CheckIcon className="size-4" />
       </span>
       <motion.span
-        className="overflow-hidden whitespace-nowrap pr-3 text-sm font-medium"
-        style={{ opacity: textOpacity, maxWidth: textMaxWidth }}
+        className="whitespace-nowrap pr-3 text-sm font-medium"
+        style={{ opacity: textOpacity }}
       >
         Successfully copied
       </motion.span>
