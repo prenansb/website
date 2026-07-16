@@ -42,7 +42,7 @@ export const experience: Experience[] = [
     role: "Design Engineer",
     period: "2025 — Current",
     description:
-      "Full-stack design engineer at an AI-native commerce platform powering 140+ restaurant brands. Owned native menu & fulfillment UX, shipped iOS Live Activities end-to-end, and built greenfield merchant-portal modules.",
+      "An AI-native commerce platform powering 140+ restaurant brands processing 2,000+ orders a day. Owned the native menu and fulfillment experience end to end, shipped real-time order tracking with live courier info, built the gift card purchase and wallet system, and stood up three merchant-portal modules from scratch — plus onboarding, account settings, and analytics used across the product.",
     href: "https://getopen.com/",
   },
   {
@@ -50,7 +50,7 @@ export const experience: Experience[] = [
     role: "Senior Software Engineer",
     period: "2025",
     description:
-      "Senior frontend engineer on iClinic, Brazil's leading cloud-based medical software. Drove the migration of legacy Django + React codebases to Next.js and built design-system components adopted across 4 product teams.",
+      "Brazil's leading cloud-based medical software company. Joined the team migrating iClinic off a decade-old Django monolith and an aging React app onto a modern stack, built foundational design-system components adopted by four product teams, and introduced feature flags so the migration could roll out gradually and safely.",
     href: "https://iclinic.com.br/",
   },
   {
@@ -58,7 +58,7 @@ export const experience: Experience[] = [
     role: "Software Engineer & Co-founder",
     period: "2024 — 2025",
     description:
-      "Co-founded a bet-tracking SaaS for League of Legends e-Sports. Built the animated landing page, a Fastify + PostgreSQL backend with Clerk auth and Stripe billing, and a local-first dashboard with PowerSync.",
+      "Co-founded a bet-tracking platform for esports, helping bettors move from casual to professional with fast onboarding and clear analytics. Built the product from the ground up — landing page, backend, and payments — including a local-first dashboard that keeps working offline and syncs in real time once back online.",
     href: "https://www.betscale.app/",
   },
   {
@@ -66,14 +66,14 @@ export const experience: Experience[] = [
     role: "Software Engineer",
     period: "2023 — 2024",
     description:
-      "Refactored the back-office front end from CRA to TypeScript + Vite, modernized state management with TanStack Query, and built a Clean-Architecture NestJS service for document approval flows.",
+      "Modernized the back office of an internal platform, improving its performance and day-to-day developer experience. Also stood up a new backend project from scratch, following Clean Architecture and using Google Cloud Storage for file uploads, to support a document-approval feature — run alongside the older Python backend I maintained.",
   },
   {
     company: "Octane Studio",
     role: "Software Engineer",
     period: "2021 — 2023",
     description:
-      "Built web products and landing pages for clients with Next.js, Radix UI, and React Query — including a real-estate platform for North Alabama integrated with Bridge Interactive and Google Maps.",
+      "A digital agency building web products for clients. Built a real-estate platform for buying and renting property in Alabama, delivered numerous marketing landing pages, and worked closely with clients on planning and expectations across daily stand-ups and estimation.",
   },
 ];
 
