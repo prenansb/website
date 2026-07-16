@@ -26,7 +26,6 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
 export default function Home() {
   return (
     <main className="mx-auto w-full max-w-[640px] px-6 py-24 sm:py-32 text-base">
-      {/* Hero */}
       <Reveal as="header">
         <h1 className="text-base font-semibold tracking-tight">
           {profile.name}
