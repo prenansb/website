@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const description = `${profile.role} based in ${profile.location}.`;
+const description = `${profile.role} based in Brazil.`;
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://prenansb.dev"),
