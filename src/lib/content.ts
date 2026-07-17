@@ -21,6 +21,11 @@ export const socials = [
     handle: "pedro-renan",
     href: "https://www.linkedin.com/in/pedro-renan",
   },
+  {
+    label: "Email",
+    handle: profile.email,
+    href: `mailto:${profile.email}`,
+  },
 ] as const;
 
 export type Experience = {

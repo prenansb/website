@@ -1,5 +1,6 @@
 import {
   ArrowTopRightIcon,
+  EnvelopeClosedIcon,
   GitHubLogoIcon,
   LinkedInLogoIcon,
   TwitterLogoIcon,
@@ -13,6 +14,7 @@ const socialIcons = {
   GitHub: GitHubLogoIcon,
   X: TwitterLogoIcon,
   LinkedIn: LinkedInLogoIcon,
+  Email: EnvelopeClosedIcon,
 } as const;
 
 function SectionLabel({ children }: { children: React.ReactNode }) {
@@ -161,8 +163,9 @@ export default function Home() {
               <li key={social.label}>
                 <a
                   href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  {...(social.href.startsWith("mailto:")
+                    ? {}
+                    : { target: "_blank", rel: "noopener noreferrer" })}
                   aria-label={social.label}
                   className="inline-flex text-muted transition-colors hover:text-foreground"
                 >
