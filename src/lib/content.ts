@@ -98,7 +98,7 @@ export const projects: Project[] = [
     blurb:
       "A bet-tracking platform for esports, helping bettors move from casual to professional with fast onboarding and clear analytics — including a local-first dashboard that keeps working offline and syncs in real time once back online.",
     href: "https://www.betscale.app/",
-    year: "2025",
+    year: "2024 - Current",
     stack: ["Next.js", "Motion", "Fastify", "PostgreSQL", "Stripe"],
     logo: "/logos/betscale.svg",
   },
