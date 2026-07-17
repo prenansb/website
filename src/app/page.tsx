@@ -88,7 +88,7 @@ export default function Home() {
                       {job.period}
                     </span>
                   </div>
-                  <p className="mt-1 text-sm text-faint">{job.role}</p>
+                  <p className="mt-1 text-sm font-medium text-faint">{job.role}</p>
                   <p className="mt-1.5 text-sm leading-6 text-muted">
                     {job.description}
                   </p>
